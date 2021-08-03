@@ -3,5 +3,5 @@
 #include<string>
 #include<vector>
 
-void animate(std::string input, std::string output, int delay, int number,int size);
-void tofile(std::vector<std::vector<int>> system, int number);
+void animate(const char* name,const char* input, const char* output, int delay, int number, int size);
+void tofile(std::string name,std::vector<std::vector<int>> system, int number);

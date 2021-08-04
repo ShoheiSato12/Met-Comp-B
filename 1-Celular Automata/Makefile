@@ -1,7 +1,7 @@
 all:
-	g++ ./source/automataNeuman.cpp ./source/automataMoore.cpp ./source/main.cpp ./source/plotting.cpp -o teste.o
+	g++ ./source/automataNeuman.cpp ./source/automataMoore.cpp ./source/main.cpp ./source/plotting.cpp ./source/general.cpp -o teste.o
 run:
-	g++ ./source/automataNeuman.cpp ./source/automataMoore.cpp ./source/main.cpp ./source/plotting.cpp -o teste.o
+	g++ ./source/automataNeuman.cpp ./source/automataMoore.cpp ./source/main.cpp ./source/plotting.cpp ./source/general.cpp -o teste.o
 	./teste.o
 clear:
 	find . -type f -executable -exec rm '{}' \;

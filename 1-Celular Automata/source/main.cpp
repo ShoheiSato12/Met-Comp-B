@@ -7,24 +7,25 @@
 #include"../include/automataNeuman.hpp"
 #include"../include/automataMoore.hpp"
 
-static std::mutex locking;
-void Neuman(int i, const char *name, int grid, int iterations, std::vector<std::vector<int>> system);
-void Moore(int i, const char *name, int grid, int iterations, std::vector<std::vector<int>> system);
+
 int main()
 {
     int grid = 100+2;
     std::vector<std::vector<int>> system;
-    int iterations=10;
-    char* name = "Simulation";
+    int iterations=15;
+    char* name = "Simulations";
     std::ofstream doc;
-   
-    for (int i = 0; i < 3;i++)
+
+
+    for (int i = 1; i < 3;i++)
     
-        {
-            grid = pow(10, i) + 2;
-            Neuman(i,name,grid,iterations, system);
-            Moore(i,name,grid,iterations, system);
-        }
+    {
+        grid = pow(10, i) + 2;
+        SimpleNeuman(i,name,grid,iterations, system);
+        SimpleMoore(i,name,grid,iterations, system);
+        ResistanceNeuman(i,name,grid,iterations, system);
+        ResistanceMoore(i,name,grid,iterations, system);
+    }
     //std::async (Neuman,0,name,grid,iterations, system);
     //std::async(Moore,0,name,grid,iterations, system);
         /*grid = pow(100, 2) + 2;
@@ -65,31 +66,4 @@ int main()
 
     return 0;
 }
-void Neuman(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
-{
-        std::ofstream doc;
-        system = initialsystem(grid);
-        doc.open("DAT/Neuman/Simulation"+std::to_string(i)+".dat",std::ios::out|std::ios::trunc);
-        std::lock_guard<std::mutex> lock(locking);
-        for (int j = 0; j < iterations;j++)
-        {
-            system = SimpleEvolveNeuman(system);
-            tofile("Neuman",system,i);
-        }
-        doc.close();
-        animate("Neuman",name, "animation/Neuman",20,i,system.size()-2);
-}
-void Moore(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
-{
-        std::ofstream doc;
-        system = initialsystem(grid);
-        doc.open("DAT/Moore/Simulation"+std::to_string(i)+".dat",std::ios::out|std::ios::trunc);
-        std::lock_guard<std::mutex> lock(locking);
-        for (int j = 0; j < iterations;j++)
-        {
-            system = SimpleEvolveNeuman(system);
-            tofile("Moore",system,i);
-        }
-        doc.close();
-        animate("Moore",name, "animation/Moore",20,i,system.size()-2);
-}
+

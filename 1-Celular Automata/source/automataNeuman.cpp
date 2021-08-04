@@ -2,11 +2,37 @@
 #include<time.h>
 #include <cstdio>
 #include <algorithm>
-#include <future>
-#include <thread>
-//#include"../include/plotting.hpp"
+#include <fstream>
+#include<iostream>
+#include"../include/plotting.hpp"
 #include"../include/automataNeuman.hpp"
 
+void SimpleNeuman(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
+{
+        std::ofstream doc;
+        system = initialsystem(grid);
+        doc.open("DAT/Neuman/Normal/Simulations"+std::to_string(i)+".dat",std::ios::out|std::ios::trunc);
+        for (int j = 0; j < iterations;j++)
+        {
+            system = SimpleEvolveNeuman(system);
+            tofile("Neuman/Normal",system,i);
+        }
+        doc.close();
+        animate("Neuman/Normal",name, "animation/Neuman/Normal",20,i,system.size()-2);
+}
+void ResistanceNeuman(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
+{
+        std::ofstream doc;
+        system = initialsystem(grid);
+        doc.open("DAT/Neuman/Resistance/Simulations"+std::to_string(i)+".dat",std::ios::out|std::ios::trunc);
+        for (int j = 0; j < iterations;j++)
+        {
+            system = ResistanceEvolveNeuman(system);
+            tofile("Neuman/Resistance",system,i);
+        }
+        doc.close();
+        animate("Neuman/Resistance",name, "animation/Neuman/Resistance",40,i,system.size()-2);
+}
 std::vector<std::vector<int>> initialsystem(int dimension)
 {
     srand(time(NULL));
@@ -34,20 +60,10 @@ std::vector<std::vector<int>> SimpleEvolveNeuman(std::vector<std::vector<int>> s
 {
     std::vector<std::vector<int>> auxsystem=system;
     int iter = (int)system.size()-2;
-    std::vector<std::future<void>> futures;
     for (int i = 1; i < iter; i++)
     {
         for (int j = 1; j < iter; j++)
         {
-            //std::thread num1 (counting,system,auxsystem,i  ,j);
-            //std::thread num2 (counting,2*i+1,2*j+1,auxsystem,system);
-            //std::thread num3 (counting,3*i+2,3*j+2,auxsystem,system);
-            //std::cout << "   " << auxsystem[i][j] << std::endl;
-            //num1.join();
-            //num2.join();
-            //num3.join();
-            //std::future<void> f = std::async(std::launch::async,counting,system,auxsystem,i,j);
-            //f.get();
             int aux=countNeumanNeighbour(system,i,j);
             switch (system[i][j])
             {
@@ -74,6 +90,14 @@ std::vector<std::vector<int>> SimpleEvolveNeuman(std::vector<std::vector<int>> s
 
     return auxsystem;
 }
+std::vector<std::vector<int>> ResistanceEvolveNeuman(std::vector<std::vector<int>> system)
+{
+    std::vector<std::vector<int>> auxsystem;
+    int iter = (int)system.size()-2;
+    auxsystem = SimpleEvolveNeuman(system);
+    resistence(auxsystem, system, 70);
+    return auxsystem;
+}
 int countNeumanNeighbour(std::vector<std::vector<int>> system,int i, int j)
 {
     int neighbour = 0;
@@ -89,10 +113,10 @@ int countNeumanNeighbour(std::vector<std::vector<int>> system,int i, int j)
     return neighbour;
 }
 
-void counting(std::vector<std::vector<int>>& sys,std::vector<std::vector<int>>& auxsys,int i, int j)
+void counting(std::vector<std::vector<int>>& system,std::vector<std::vector<int>>& auxsystem,int i, int j)
 {
-    int aux=countNeumanNeighbour(sys,i,j);
-    switch (sys[i][j])
+    int aux=countNeumanNeighbour(system,i,j);
+    switch (system[i][j])
     {
         case 1:
             if(aux==2)
@@ -101,19 +125,34 @@ void counting(std::vector<std::vector<int>>& sys,std::vector<std::vector<int>>& 
             }
             else
             {
-                auxsys[i][j] = 0;
+                auxsystem[i][j] = 0;
             }
             break;
         
         case 0:
             if(aux==3)
             {
-                auxsys[i][j] = 1;
+                auxsystem[i][j] = 1;
             }
             break;
     }
 }
-void example()
+void resistence(std::vector<std::vector<int>>&auxsystem,std::vector<std::vector<int>>system,int perc)
 {
+    int aux = 0;
+    while (aux!=perc)
+    {
+        int i = rand()%system.size();
+        int j = rand()%system.size();
+        switch (system[i][j])
+        {
+            case 0:
+                break;
 
+            case 1:
+                auxsystem[i][j] = 1;
+                aux++;
+                break;
+        }
+    }
 }

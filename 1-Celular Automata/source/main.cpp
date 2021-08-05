@@ -15,7 +15,7 @@ int main()
     int iterations=15;
     char* name = "Simulations";
     std::ofstream doc;
-    for (int i = 1; i < 3;i++)
+    for (int i = 3; i < 4;i++)
     {
         grid = pow(10, i) + 2;
         SimpleNeuman(i,name,grid,iterations, system);

@@ -10,7 +10,7 @@ void SimpleMoore(int i,const char* name,int grid, int iterations, std::vector<st
             tofile("Moore/Normal",system,i);
         }
         doc.close();
-        animate("Moore/Normal",name, "animation/Moore/Normal",40,i,system.size()-2);
+        //animate("Moore/Normal",name, "animation/Moore/Normal",40,i,system.size()-2);
 }
 void ResistanceMoore(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
 {

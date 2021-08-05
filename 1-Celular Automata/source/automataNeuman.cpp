@@ -11,7 +11,7 @@ void SimpleNeuman(int i,const char* name,int grid, int iterations, std::vector<s
             tofile("Neuman/Normal",system,i);
         }
         doc.close();
-        animate("Neuman/Normal",name, "animation/Neuman/Normal",40,i,system.size()-2);
+        //animate("Neuman/Normal",name, "animation/Neuman/Normal",40,i,system.size()-2);
 }
 void ResistanceNeuman(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
 {

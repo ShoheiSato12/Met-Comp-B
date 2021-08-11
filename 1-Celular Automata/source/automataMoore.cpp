@@ -1,7 +1,7 @@
 #include"../include/automataMoore.hpp"
 void SimpleMoore(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
 {
-        std::ofstream doc;
+        /*std::ofstream doc;
         system = initialsystem(grid);
         doc.open("DAT/Moore/Normal/Simulations"+std::to_string(i)+".dat",std::ios::out|std::ios::trunc);
         for (int j = 0; j < iterations;j++)
@@ -9,8 +9,8 @@ void SimpleMoore(int i,const char* name,int grid, int iterations, std::vector<st
             system = SimpleEvolveMoore(system);
             tofile("Moore/Normal",system,i);
         }
-        doc.close();
-        //animate("Moore/Normal",name, "animation/Moore/Normal",40,i,system.size()-2);
+        doc.close();*/
+        animate("Moore/Normal",name, "animation/Moore/Normal",40,i,system.size()-2);
 }
 void ResistanceMoore(int i,const char* name,int grid, int iterations, std::vector<std::vector<int>>system)
 {

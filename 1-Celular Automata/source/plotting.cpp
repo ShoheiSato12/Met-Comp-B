@@ -14,9 +14,9 @@ void animate(const char* name,const char* input, const char* output, int delay,i
         //fprintf(gnu,"set title \'%s\'\n",title );
         fprintf(gnu,"set size square\n");
         fprintf(gnu,"unset colorbox\n");
-        fprintf(gnu,"set xrange [0:%i]\n",size-2);
+        fprintf(gnu,"stats \'./%s/Simulations%i.dat\' name \'A\'\n",name,number);
         fprintf(gnu,"set yrange [0:%i]\n",size-2);
-        fprintf(gnu,"stats \'%s/Simulations%i.dat\' name \'A\'\n",name,number);
+        fprintf(gnu,"set xrange [0:%i]\n",size-2);
         fprintf(gnu, "do for [i=0:int(A_blocks-2)]{\n");
         fprintf(gnu,"set title \"%s Iteration\".i\n",name);
         fprintf(gnu,"plot \'%s/Simulations%i.dat\' index i matrix w image}\n",name,number);

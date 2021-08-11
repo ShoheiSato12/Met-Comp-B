@@ -23,7 +23,7 @@ int main()
         //ResistanceNeuman(i,name,grid,iterations, system);
         //ResistanceMoore(i,name,grid,iterations, system);
     }*/
-    std::cout << __cplusplus;
+    std::cout << __cplusplus; 
     return 0;
 }
 

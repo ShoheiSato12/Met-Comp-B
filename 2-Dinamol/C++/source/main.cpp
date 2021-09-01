@@ -81,7 +81,7 @@ class System
 
 int main()
 {
-    double size[2, 2];
+    double size[2]={2, 2};
     System aux1 (1e4,52,0.01,1,size);
     double z = 2.56;
     std::cout << z - (int)z;

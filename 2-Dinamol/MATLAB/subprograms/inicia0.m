@@ -10,7 +10,7 @@ a=min(X/Nx,Y/Ny)/; %se necessário, diminui "a" para caberem Nx átomos em X e N
 x=zeros(1,N); y=zeros(1,N);
 for n=1:N
     z=(n-1)/Nx;
-    x(n)=a*(Nx*(z-floor(z)+0.5); %define coord x inicial
+    x(n)=a*(Nx*(z-floor(z))+0.5); %define coord x inicial
     y(n)=a*(ceil(n/Nx)-0.5); %define coordenada y inicial;
 end
 %velocidades iniciais sorteadas à temperatura Y:

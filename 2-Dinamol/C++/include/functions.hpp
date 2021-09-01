@@ -1,1 +1,1 @@
-double GaussRand(double T);
+double GaussRand();

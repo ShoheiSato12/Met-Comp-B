@@ -4,6 +4,7 @@
 #include<algorithm>
 #include<thread>
 #include<future>
+#include"../include/functions.hpp"
 
 class System
 {
@@ -18,10 +19,13 @@ class System
         double endtime;
         double dimension[2];
         double l; //Distância de atuação da força, valor recomendado é 3
+        double energy;
+        double kinetic;
+        double potential;
 
     public:
         System(int numParticles, double initialTemperature,
-               double step, double end, double sizes[2])
+               double step, double end, double sizes[2]) //System initialization
         {
             particles = numParticles;
             Temperature = initialTemperature;
@@ -42,7 +46,11 @@ class System
             {
                 double z = (i) / initialX;
                 x[i] = parameter * (initialX * (z - (int)z)+ 0.5);
+                y[i] = parameter * (ceil(i / initialX) - 0.5);
+                vx[i] = sqrt(Temperature) * GaussRand();
+                vy[i] = sqrt(Temperature) * GaussRand();
             }
+
         }
         double getTemperature()
         {
@@ -66,12 +74,25 @@ class System
         }
         void setL(double L)
         {
-
+            l = L;
         }
-        void integrate()
+        void evolution()
         {
 
         }
+        void energies()
+        {
+
+        }
+        void reflection()
+        {
+
+        }
+        double getEnergy()
+        {
+
+        }
+
 
 
 

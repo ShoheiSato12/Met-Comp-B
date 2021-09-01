@@ -6,10 +6,10 @@ S=X*Y; % área de amostra;
 a=sqrt(S/N); % parâmetro de rede para encher o espaço com N pontos;
 Nx=ceil(X/a); % númerp de sítios iniciais ao longo de x
 Ny=ceil(Y/a); % mesmo para o eixo y 
-a=min(x/Nx,Y/Ny)/; %se necessário, diminui "a" para caberem Nx átomos em X e Ny em Y
+a=min(X/Nx,Y/Ny)/; %se necessário, diminui "a" para caberem Nx átomos em X e Ny em Y
 x=zeros(1,N); y=zeros(1,N);
-for n=1:n
-    z=(n-z)/Nx;
+for n=1:N
+    z=(n-1)/Nx;
     x(n)=a*(Nx*(z-floor(z)+0.5); %define coord x inicial
     y(n)=a*(ceil(n/Nx)-0.5); %define coordenada y inicial;
 end

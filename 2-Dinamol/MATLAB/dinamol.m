@@ -14,7 +14,7 @@ while (length(tmax)>0) %calcula enquanto o operador fornecer tempo para continua
         renorm=sqrt(Tnova/T); %renormalização das velocidades conforme nova temperatura
         vx = vx*renorm;
         vx = vy*renorm;
-        T = Tenova;
+        T = Tnova;
     end;
 end
 end

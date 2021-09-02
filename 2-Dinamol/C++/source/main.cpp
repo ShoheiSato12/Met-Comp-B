@@ -14,6 +14,7 @@ class System
         std::vector<double> y;
         std::vector<double> vx;
         std::vector<double> vy;
+        std::vector<bool> region;
         double Temperature;
         double tau;
         double endtime;
@@ -24,10 +25,10 @@ class System
         double potential;
 
     public:
-        System(int numParticles, double initialTemperature,
+        System(int exponent, double initialTemperature,
                double step, double end, double sizes[2]) //System initialization
         {
-            particles = numParticles;
+            particles = pow(4,exponent);
             Temperature = initialTemperature;
             tau = step;
             endtime = end;
@@ -42,15 +43,20 @@ class System
             double parameter = sqrt(surface/particles);
             int initialX = ceil(sizes[0] / parameter);
             int initialY = ceil(sizes[1] / parameter);
-            for (int i = 0; i < particles;i++)
+            auto parallel = [&](std::vector<double> x, std::vector<double> y, std::vector<double> vx,
+                                std::vector<double> vy, double Temperature, int initialX, int j, int k)
             {
-                double z = (i) / initialX;
-                x[i] = parameter * (initialX * (z - (int)z)+ 0.5);
-                y[i] = parameter * (ceil(i / initialX) - 0.5);
-                vx[i] = sqrt(Temperature) * GaussRand();
-                vy[i] = sqrt(Temperature) * GaussRand();
-            }
-
+                for (int i = j; i < k;i++)
+                {
+                    double z = (i) / initialX;
+                    x[i] = parameter * (initialX * (z - (int)z)+ 0.5);
+                    y[i] = parameter * (ceil(i / initialX) - 0.5);
+                    vx[i] = sqrt(Temperature) * GaussRand();
+                    vy[i] = sqrt(Temperature) * GaussRand();
+                }
+            };
+            std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 0, 10);
+            std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 9, 20);
         }
         double getTemperature()
         {
@@ -103,7 +109,7 @@ class System
 int main()
 {
     double size[2]={2, 2};
-    System aux1 (1e4,52,0.01,1,size);
-    double z = 2.56;
-    std::cout << z - (int)z;
+    System sys (5,52,0.01,1,size);
+    sys.setL(3);
+    std::cout << sys.getX()[5];
 }

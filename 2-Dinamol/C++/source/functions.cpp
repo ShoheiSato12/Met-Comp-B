@@ -12,3 +12,7 @@ double GaussRand()
     double aux = nd(generator);
     return aux;
 }
+void plot()
+{
+    
+}

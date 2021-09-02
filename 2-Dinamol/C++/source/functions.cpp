@@ -31,6 +31,12 @@ double internalSum(std::vector<std::vector<double>>vector)
 
     return result;
 }
+std::vector<double>MatrixInitialization(int a, int b)
+{
+    std::vector<std::vector<double>> matrix (a,std::vector(b,0));
+    return matrix;
+}
+
 void plot()
 {
     

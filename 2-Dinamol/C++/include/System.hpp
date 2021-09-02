@@ -26,9 +26,12 @@ class System
         std::vector<double> getY();
         std::vector<double> getVx();
         std::vector<double> getVy();
+        double getTotalEnergy();
+        double getKineticEnergy();
+        double getPotentialEnergy();
         void setL(double L);
         void evolution();
         void potential();
         void reflection();
-        double getEnergy();
+        void forces();
 };

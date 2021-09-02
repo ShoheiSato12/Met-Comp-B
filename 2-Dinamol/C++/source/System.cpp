@@ -62,13 +62,26 @@ std::vector<double> System::getVy()
 {
     return vy;
 }
+double System::getTotalEnergy()
+{
+    return energy;
+}
+double System::getKineticEnergy()
+{
+    return Kinetic;
+}
+double System::getPotentialEnergy()
+{
+    return V;
+}
 void System::setL(double L)
 {
     l = L;
 }
 void System::evolution()
 {
-
+    std::vector<double> fx(particles,0);
+    std::vector<double> fy(particles,0);
 }
 void System::potential()
 {
@@ -82,7 +95,8 @@ void System::reflection()
 {
 
 }
-double System::getEnergy()
+void System::forces(std::vector<double>fx,std::vector<double>fy);
 {
-    return energy;
+    std::vector<std::vector<double>>fpx=Matrixinitialization(particles,particles);
+    std::vector<std::vector<double>>fpy=Matrixinitialization(particles,particles);
 }

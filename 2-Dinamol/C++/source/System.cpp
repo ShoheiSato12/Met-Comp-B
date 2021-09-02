@@ -1,3 +1,4 @@
+#pragma once
 #include<cmath>
 #include<thread>
 #include"../include/System.hpp"

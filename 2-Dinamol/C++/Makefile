@@ -1,7 +1,7 @@
 all:
-	g++ ./source/main.cpp ./source/functions.cpp -o main.o
+	g++ -pthread -g -Wall -lm ./source/main.cpp ./source/functions.cpp -o main.o
 run:
-	g++ ./source/main.cpp ./source/functions.cpp -o main.o
+	g++ -pthread -g -Wall -lm ./source/main.cpp ./source/functions.cpp -o main.o
 	./main.o
 clear:
 	find . -type f -executable -exec rm '{}' \;

@@ -4,6 +4,7 @@
 #include<algorithm>
 #include<thread>
 #include<future>
+#include<chrono>
 #include"../include/functions.hpp"
 
 class System
@@ -55,8 +56,14 @@ class System
                     vy[i] = sqrt(Temperature) * GaussRand();
                 }
             };
-            std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 0, 10);
-            std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 9, 20);
+            std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 0, particles/4);
+            std::thread f2(parallel, x, y, vx, vy, Temperature, initialX, particles/4, particles/2);
+            std::thread f3(parallel, x, y, vx, vy, Temperature, initialX, particles/2, particles*2/3);
+            std::thread f4(parallel, x, y, vx, vy, Temperature, initialX, particles*2/3, particles);
+            f1.join();
+            f2.join();
+            f3.join();
+            f4.join();
         }
         double getTemperature()
         {
@@ -96,7 +103,7 @@ class System
         }
         double getEnergy()
         {
-
+            return energy;
         }
 
 
@@ -108,8 +115,13 @@ class System
 
 int main()
 {
+    auto start = std::chrono::high_resolution_clock::now();
     double size[2]={2, 2};
+
     System sys (5,52,0.01,1,size);
     sys.setL(3);
     std::cout << sys.getX()[5];
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    std::cout << std::endl << "Duration " << duration.count() << " ms" << std::endl;
 }

@@ -6,4 +6,4 @@
 double GaussRand();
 double internalSum(std::vector<double>vector);
 double internalSum(std::vector<std::vector<double>>vector);
-std::vector<double>MatrixInitialization(int a, int b);
+std::vector<std::vector<double>>MatrixInitialization(int a, int b);

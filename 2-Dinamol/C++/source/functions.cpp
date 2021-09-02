@@ -12,7 +12,7 @@ double GaussRand()
 double internalSum(std::vector<double>vector)
 {
     double result=0;
-    for (uint i=0;i<vector.size();i++)
+    for (int i=0;i<(int)vector.size();i++)
     {
         result+=vector[i];
     }
@@ -21,9 +21,9 @@ double internalSum(std::vector<double>vector)
 double internalSum(std::vector<std::vector<double>>vector)
 {
     double result =0;
-    for(uint i=0;i<vector.size();i++)
+    for(int i=0;i<(int)vector.size();i++)
     {
-        for(uint j=0;j<vector[i].size();j++)
+        for(int j=0;j<(int)vector[i].size();j++)
         {
             result+=vector[i][j];
         }
@@ -31,9 +31,9 @@ double internalSum(std::vector<std::vector<double>>vector)
 
     return result;
 }
-std::vector<double>MatrixInitialization(int a, int b)
+std::vector<std::vector<double>>MatrixInitialization(int a, int b)
 {
-    std::vector<std::vector<double>> matrix (a,std::vector(b,0));
+    std::vector<std::vector<double>> matrix (a,std::vector<double>(b,0));
     return matrix;
 }
 

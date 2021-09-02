@@ -68,7 +68,7 @@ double System::getTotalEnergy()
 }
 double System::getKineticEnergy()
 {
-    return Kinetic;
+    return kinetic;
 }
 double System::getPotentialEnergy()
 {
@@ -95,8 +95,8 @@ void System::reflection()
 {
 
 }
-void System::forces(std::vector<double>fx,std::vector<double>fy);
+void System::forces(std::vector<double>fx,std::vector<double>fy)
 {
-    std::vector<std::vector<double>>fpx=Matrixinitialization(particles,particles);
-    std::vector<std::vector<double>>fpy=Matrixinitialization(particles,particles);
+    std::vector<std::vector<double>>fpx=MatrixInitialization(particles,particles);
+    std::vector<std::vector<double>>fpy=MatrixInitialization(particles,particles);
 }

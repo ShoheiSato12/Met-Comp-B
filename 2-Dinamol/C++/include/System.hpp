@@ -33,5 +33,5 @@ class System
         void evolution();
         void potential();
         void reflection();
-        void forces();
+        void forces(std::vector<double>fx,std::vector<double>fy);
 };

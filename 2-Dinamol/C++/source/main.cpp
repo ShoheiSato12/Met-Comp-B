@@ -53,7 +53,7 @@ class System
                     x[i] = parameter * (initialX * (z - (int)z)+ 0.5);
                     y[i] = parameter * (ceil(i / initialX) - 0.5);
                     vx[i] = sqrt(Temperature) * GaussRand();
-                    vy[i] = sqrt(Temperature) * GaussRand();
+                    vy[i] = sqrt(Temperature) * GaussRand();    
                 }
             };
             std::thread f1(parallel, x, y, vx, vy, Temperature, initialX, 0, particles/4);

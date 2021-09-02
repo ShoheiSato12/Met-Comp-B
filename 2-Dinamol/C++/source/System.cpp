@@ -70,9 +70,13 @@ void System::evolution()
 {
 
 }
-void System::energies()
+void System::potential()
 {
+    V=0;
+    for(int i =0;i<particles-2;i++)
+    {
 
+    }
 }
 void System::reflection()
 {

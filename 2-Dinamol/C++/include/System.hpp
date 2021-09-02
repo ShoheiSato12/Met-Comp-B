@@ -16,7 +16,7 @@ class System
         double l; //Distância de atuação da força, valor recomendado é 3
         double energy;
         double kinetic;
-        double potential;
+        double V;
 
     public:
         System(int exponent, double initialTemperature,
@@ -28,7 +28,7 @@ class System
         std::vector<double> getVy();
         void setL(double L);
         void evolution();
-        void energies();
+        void potential();
         void reflection();
         double getEnergy();
 };

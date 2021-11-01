@@ -1,4 +1,4 @@
-%integra a equação de movimento de dinâmica molecular por velocuty verlet
+%integra a equação de movimento de dinâmica molecular por velocity-verlet
 dt2=dt*dt; mdt2=0.5*dt2; h=dt/2
 itmax=ceil(tmax/dt);
 forcas0; % calcula as froças entre o átomos

@@ -14,8 +14,8 @@ class System
         double endtime;
         double dimension[2];
         double l; //Distância de atuação da força, valor recomendado é 3
-        double energy;
-        double kinetic;
+        double E;
+        double K;
         double V;
 
     public:
@@ -31,7 +31,8 @@ class System
         double getPotentialEnergy();
         void setL(double L);
         void evolution();
-        void potential();
         void reflection();
-        void forces(std::vector<double>fx,std::vector<double>fy);
+        void potentialforces(std::vector<double>&fx,std::vector<double>&fy);
+        void kinetic();
+        void energy();
 };

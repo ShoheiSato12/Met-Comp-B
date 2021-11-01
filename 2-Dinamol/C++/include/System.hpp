@@ -3,7 +3,7 @@
 class System
 {
     private:
-        int particles;
+        int particles; //Quantity of particles of system
         std::vector<double> x;
         std::vector<double> y;
         std::vector<double> vx;

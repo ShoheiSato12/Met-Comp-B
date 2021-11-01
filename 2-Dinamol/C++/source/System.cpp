@@ -17,7 +17,7 @@ System::System(int exponent, double initialTemperature,
     y = aux;
     vy = aux;
     vx = aux;
-    double surface = sizes[0] * sizes[1];
+    double surface =dimension[0] *dimension[1];
     double parameter = sqrt(surface/particles);
     int initialX = ceil(sizes[0] / parameter);
     int initialY = ceil(sizes[1] / parameter);
@@ -78,12 +78,12 @@ void System::setL(double L)
 {
     l = L;
 }
-void System::evolution()
+void System::evolution() //Complete evolution of system
 {
     std::vector<double> fx(particles,0);
     std::vector<double> fy(particles,0);
 }
-void System::potential()
+void System::potential()//Complete potential of system
 {
     V=0;
     for(int i =0;i<particles-2;i++)
@@ -91,11 +91,11 @@ void System::potential()
 
     }
 }
-void System::reflection()
+void System::reflection()//Complete reflection of particle
 {
 
 }
-void System::forces(std::vector<double>fx,std::vector<double>fy)
+void System::forces(std::vector<double>fx,std::vector<double>fy)//Complete forces of particles
 {
     std::vector<std::vector<double>>fpx=MatrixInitialization(particles,particles);
     std::vector<std::vector<double>>fpy=MatrixInitialization(particles,particles);

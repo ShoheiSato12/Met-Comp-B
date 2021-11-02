@@ -1,5 +1,9 @@
 #include<vector>
 #include<iostream>
+#include<fstream>
+#include<cmath>
+#include<thread>
+#include"../include/functions.hpp"
 class System
 {
     private:
@@ -35,4 +39,6 @@ class System
         void potentialforces(std::vector<double>&fx,std::vector<double>&fy);
         void kinetic();
         void energy();
+        void tofile(std::string name, std::vector<double> xcord, std::vector<double> ycord);
+        void plot();
 };

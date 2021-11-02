@@ -36,8 +36,3 @@ std::vector<std::vector<double>>MatrixInitialization(int a, int b)
     std::vector<std::vector<double>> matrix (a,std::vector<double>(b,0));
     return matrix;
 }
-
-void plot()
-{
-    
-}

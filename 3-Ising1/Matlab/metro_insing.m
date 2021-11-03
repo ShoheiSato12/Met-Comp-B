@@ -37,4 +37,4 @@ for n=1:LN%sortei de um spin
             S(i,j)=-s;E=E+dE;
         end
     end
-    
+end

@@ -20,12 +20,12 @@ if(T0==0)
     E=-2*LN;%escolhemos J=+1 e usaremos condições de contorno periódicas;
     %cada spin tem 4 vizinhos, por isso 2*LN pares;
 else
-    E=0
+    E=0;
     S=sign(rand(L,N)-0.5);
     for i=1:L-1
         E=E-S(i,:)*S(i+1,:)'; %interação entre a fila i e seguinte
     end
-    E=E-S(1,:)*S(i+1)'; %interação entre a primeira e última fila
+    E=E-S(1,:)*S(L,:)'; %interação entre a primeira e última fila
     for j=1:N-1;
         E=E-S(:,j)'*S(:,j+1); %interação entre coluna j e seguinte
     end

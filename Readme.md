@@ -16,3 +16,4 @@ Isso somente funciona se o computador possuir o programa Makfile instalado no co
 ## Referências
 O livro base para estes programas é o do autor Claudio Scherer, "Métodos Computacionais da Física" da editora Livraria da Física.
 
+

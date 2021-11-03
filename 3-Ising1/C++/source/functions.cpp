@@ -23,3 +23,28 @@ std::vector<std::vector<int>> randspin(int size[2])
     }
     return a;
 }
+void tofile(std::vector<std::vector<int>> matrix)
+{
+    std::ofstream out;
+    out.open("output/dat/spin.dat",std::ios::out|std::ios::app);
+    for (uint i = 0; i < matrix.size();i++)
+    {
+        for (uint j = 0; j < matrix[i].size();j++)
+        {
+            out << matrix[i][j] << "    ";
+        }
+        out << std::endl;
+    }
+    out << std::endl
+        << std::endl;
+    out.close();
+}
+void plot()
+{
+    FILE *gnu = popen("gnuplot -persist", "w");
+    if(gnu)
+    {
+        fprintf(gnu,"load \'spin.plt\'\n");
+        //fprintf(gnu,"    \n");
+    }
+}

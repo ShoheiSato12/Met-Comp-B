@@ -79,8 +79,8 @@ void System::evolve()
 {
     for (int i = 0; i < dimension[0] * dimension[1];i++)
     {
-        int a = (int)dimension[0] * (double)rand() / RAND_MAX;
-        int b = (int)dimension[1] * (double)rand() / RAND_MAX;
+        int a = int((dimension[0]-1) * ((double)rand() / RAND_MAX));
+        int b = int((dimension[1]-1) * ((double)rand() / RAND_MAX));
         int auxspin = spin[a][b];
         int  i1,  i2,  i3,  i4;
         int  j1,  j2,  j3,  j4;
@@ -92,21 +92,21 @@ void System::evolve()
         j2 = b;
         j3 = b - 1;
         j4 = b;
-        if(a==1)
+        if(a==0)
         {
-            i2 = dimension[0];
+            i2 = dimension[0]-1;
         }
         else if(a==dimension[0])
         {
-            i4 = 1;
+            i4 = 0;
         }
-        if(b==1)
+        if(b==0)
         {
-            j3 = dimension[1];
+            j3 = dimension[1]-1;
         }
-        else if(b=dimension[1])
+        else if(b==dimension[1])
         {
-            j1 = 1;
+            j1 = 0;
         }
         int sum = spin[i1][j1]+spin[i2][j2]+spin[i3][j3]+spin[i4][j4];
         double dE = 2 * auxspin * (sum + field);
@@ -132,7 +132,6 @@ void System::evolve()
     magnetic2.push_back(M*M);
     energy.push_back(E);
     energy2.push_back(E*E);
-    //tofile();
 }
 void System::status(int steps)
 {

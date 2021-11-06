@@ -53,9 +53,14 @@ int internalSum(std::vector<std::vector<int>>vector)
 
     return result;
 }
-std::vector<std::vector<double>>MatrixInitialization(int a, int b)
+std::vector<std::vector<double>>MatrixInitializationDouble(int a, int b)
 {
     std::vector<std::vector<double>> matrix (a,std::vector<double>(b,0));
+    return matrix;
+}
+std::vector<std::vector<int>>MatrixInitializationInt(int a, int b)
+{
+    std::vector<std::vector<int>> matrix (a,std::vector<int>(b,0));
     return matrix;
 }
 std::vector<std::vector<double>> identity(int a)

@@ -19,7 +19,7 @@ int main()
     auto start = std::chrono::high_resolution_clock::now();
     std::ofstream point("output/dat/spin.dat");
     System sistema= System(dimension, 2, 0, 1);
-    steps = 200;
+    steps = 100;
     while (confirmation)
     {
 
